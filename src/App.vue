@@ -2,10 +2,12 @@
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import CardsList from "./components/CardsList.vue";
+import AppSearch from "./components/AppSearch.vue";
 import { store } from "./store";
 export default {
   components: {
     AppHeader,
+    AppSearch,
     CardsList,
   },
   data() {
@@ -35,6 +37,7 @@ export default {
 
 <template>
   <AppHeader message="Yu-Gi-Ho Api" />
+  <AppSearch />
   <CardsList />
 </template>
 
