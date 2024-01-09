@@ -18,11 +18,19 @@ export default {
 
   methods: {
     getCards() {
+      let myUrl = store.apiURL;
+      if (store.FindArchetype !== "") {
+        myUrl += `&archetype=${store.FindArchetype}`;
+      }
       axios
-        .get(store.apiURL)
+        .get(myUrl)
         .then((res) => {
           store.CardList = res.data.data;
-          // console.log(res.data.data);
+          const allArchetypes = store.CardList.map((card) => card.archetype);
+          store.ArchetypeList = [
+            ...new Set(allArchetypes.filter((archetype) => archetype)),
+          ];
+          console.log(store.ArchetypeList);
         })
         .catch((err) => {
           console.log("Errori", err);
@@ -37,7 +45,7 @@ export default {
 
 <template>
   <AppHeader message="Yu-Gi-Ho Api" />
-  <AppSearch />
+  <AppSearch @Search="getCards" />
   <CardsList />
 </template>
 
