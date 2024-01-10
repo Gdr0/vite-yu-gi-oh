@@ -5,7 +5,7 @@ export const store = reactive({
   ArchetypeList: [],
 
   apiURL: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0",
-
+  archetypeURL: "https://db.ygoprodeck.com/api/v7/archetypes.php",
   FindArchetype: "",
 });
 // https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0

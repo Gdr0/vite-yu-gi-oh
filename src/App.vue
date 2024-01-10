@@ -26,10 +26,22 @@ export default {
         .get(myUrl)
         .then((res) => {
           store.CardList = res.data.data;
-          const allArchetypes = store.CardList.map((card) => card.archetype);
-          store.ArchetypeList = [
-            ...new Set(allArchetypes.filter((archetype) => archetype)),
-          ];
+        })
+        .catch((err) => {
+          console.log("Errori", err);
+        });
+      axios;
+      //   const allArchetypes = store.CardList.map((card) => card.archetype);
+      //   store.ArchetypeList = [
+      //     ...new Set(allArchetypes.filter((archetype) => archetype)),
+      //   ];
+      //   console.log(store.ArchetypeList);
+    },
+    getArchetypes() {
+      axios
+        .get(store.archetypeURL)
+        .then((response) => {
+          store.ArchetypeList = response.data;
           console.log(store.ArchetypeList);
         })
         .catch((err) => {
@@ -39,6 +51,7 @@ export default {
   },
   created() {
     this.getCards();
+    this.getArchetypes();
   },
 };
 </script>
